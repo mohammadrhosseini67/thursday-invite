@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>یه پیشنهاد برای پنجشنبه</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+        font-family: 'Vazirmatn', sans-serif;
+        color: #39352f;
+        background:
+            radial-gradient(circle at 12% 15%, rgba(255,255,255,.75), transparent 28%),
+            radial-gradient(circle at 90% 85%, rgba(179,155,119,.25), transparent 30%),
+            linear-gradient(135deg, #eee9df, #d9d1c4);
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 490px;
+        position: relative;
+    }
+
+    .card {
+        position: relative;
+        overflow: hidden;
+        background: rgba(255, 253, 249, .96);
+        border: 1px solid rgba(130, 110, 80, .16);
+        border-radius: 30px;
+        padding: 42px 30px 32px;
+        text-align: center;
+        box-shadow:
+            0 25px 70px rgba(60, 48, 30, .13),
+            0 3px 12px rgba(60, 48, 30, .05);
+        animation: appear .55s ease;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #b9a486, #77664d, #b9a486);
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateY(20px) scale(.985);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .top-label {
+        display: inline-block;
+        padding: 8px 17px;
+        border-radius: 30px;
+        background: #f1ece3;
+        color: #89765a;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 27px;
+        border: 1px solid #e9e1d5;
+    }
+
+    .icon {
+        width: 76px;
+        height: 76px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 22px;
+        border-radius: 24px;
+        background: linear-gradient(145deg, #f5f0e7, #eae1d3);
+        font-size: 37px;
+        box-shadow: inset 0 1px 3px rgba(255,255,255,.8);
+    }
+
+    h1 {
+        font-size: 27px;
+        font-weight: 800;
+        margin-bottom: 17px;
+        color: #38332c;
+        line-height: 1.7;
+    }
+
+    .description {
+        font-size: 15px;
+        line-height: 2.35;
+        color: #777066;
+        margin-bottom: 26px;
+    }
+
+    .date-box {
+        background: linear-gradient(135deg, #f7f3ec, #f0e9de);
+        border: 1px solid #e9e0d2;
+        border-radius: 18px;
+        padding: 17px;
+        margin-bottom: 25px;
+        color: #65563f;
+        font-size: 14px;
+        line-height: 2.1;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    button {
+        width: 100%;
+        border: none;
+        border-radius: 15px;
+        padding: 15px 18px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+
+    button:hover {
+        transform: translateY(-3px);
+    }
+
+    button:active {
+        transform: scale(.98);
+    }
+
+    .primary {
+        background: linear-gradient(135deg, #89765a, #6d5b42);
+        color: white;
+        box-shadow: 0 7px 18px rgba(109, 91, 66, .2);
+    }
+
+    .primary:hover {
+        background: linear-gradient(135deg, #776449, #5e4e38);
+        box-shadow: 0 10px 22px rgba(109, 91, 66, .27);
+    }
+
+    .secondary {
+        background: #f2eee7;
+        color: #6f6557;
+        border: 1px solid #e9e2d7;
+    }
+
+    .secondary:hover {
+        background: #eae3d8;
+    }
+
+    .progress {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 29px;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50px;
+        background: #ded7cc;
+        transition: all .3s ease;
+    }
+
+    .dot.active {
+        width: 24px;
+        background: #89765a;
+    }
+
+    .time-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 13px;
+        margin: 27px 0;
+    }
+
+    .time-button {
+        background: #f5f1e9;
+        color: #625641;
+        border: 1px solid #e9e1d5;
+        font-size: 19px;
+        padding: 19px 10px;
+        direction: ltr;
+        font-family: Arial, sans-serif;
+        border-radius: 16px;
+    }
+
+    .time-button:hover {
+        border-color: #a89575;
+        background: #eee7db;
+    }
+
+    .time-button.selected {
+        background: #77664d;
+        color: white;
+        border-color: #77664d;
+        box-shadow: 0 6px 16px rgba(119, 102, 77, .22);
+    }
+
+    .final-time {
+        direction: ltr;
+        display: inline-block;
+        font-family: Arial, sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: #77664d;
+        background: #f3eee5;
+        border: 1px solid #e7dece;
+        border-radius: 16px;
+        padding: 12px 28px;
+        margin: 5px 0 22px;
+    }
+
+    .footer {
+        margin-top: 28px;
+        color: #aaa092;
+        font-size: 11px;
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding: 16px;
+        }
+
+        .card {
+            padding: 36px 22px 27px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            font-size: 23px;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 2.2;
+        }
+
+        .time-button {
+            padding: 17px 8px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card" id="card"></div>
+</div>
+
+<script>
+    let currentStep = 1;
+    let selectedTime = "";
+
+    const card = document.getElementById("card");
+
+    const steps = {
+        1: {
+            icon: "🗓️",
+            label: "یه پیشنهاد کوچیک",
+            title: "یه پیشنهاد دارم!",
+            description: "پنجشنبه وقت داری؟ گفتم یه قرار کوچیک داشته باشیم، کمی صحبت کنیم و چند ساعتی از روزمون رو متفاوت بگذرونیم.",
+            yes: "آره، چرا که نه!",
+            no: "نه، پنجشنبه کار دارم!"
+        },
+
+        2: {
+            icon: "🤔",
+            label: "هنوز فرصت هست!",
+            title: "یکم بیشتر فکر کن!",
+            description: "مطمئنی؟ هنوز تا پنجشنبه چند روز مونده، شاید بشه برنامه‌ها رو یه جوری تنظیم کرد!",
+            yes: "باشه، قبول!",
+            no: "هنوز فکر می‌کنم نه!"
+        },
+
+        3: {
+            icon: "😂",
+            label: "یه تلاش دیگه!",
+            title: "این همه سخت نگیر!",
+            description: "قول می‌دم قرار خوب و خوش‌صحبتی باشه. تازه فرصت خوبیه که بیشتر با هم گپ بزنیم!",
+            yes: "خب، بزن بریم!",
+            no: "بازم باید فکر کنم!"
+        },
+
+        4: {
+            icon: "😁",
+            label: "مرحله آخر",
+            title: "آخرین مرحله!",
+            description: "دیگه تمام تلاشمو کردم! حالا بیا بریم سراغ اصل ماجرا و ساعت قرار رو مشخص کنیم.",
+            yes: "باشه، میام!"
+        }
+    };
+
+    function render(html) {
+        card.style.animation = "none";
+        card.offsetHeight;
+        card.style.animation = "appear 0.55s ease";
+        card.innerHTML = html;
+    }
+
+    function showStep() {
+        const step = steps[currentStep];
+
+        let buttonsHTML = `
+            <button class="primary" onclick="acceptInvite()">
+                ${step.yes}
+            </button>
+        `;
+
+        if (step.no) {
+            buttonsHTML += `
+                <button class="secondary" onclick="declineInvite()">
+                    ${step.no}
+                </button>
+            `;
+        }
+
+        let dotsHTML = `
+            <div class="progress">
+                ${[1, 2, 3, 4].map(number => `
+                    <span class="dot ${number === currentStep ? 'active' : ''}"></span>
+                `).join("")}
+            </div>
+        `;
+
+        render(`
+            <div class="top-label">${step.label}</div>
+            <div class="icon">${step.icon}</div>
+            <h1>${step.title}</h1>
+            <p class="description">${step.description}</p>
+
+            ${currentStep === 1 ? `
+                <div class="date-box">
+                    پنجشنبه<br>
+                    ساعت 4:30 تا 7:00 عصر
+                </div>
+            ` : ""}
+
+            <div class="buttons">
+                ${buttonsHTML}
+            </div>
+
+            ${dotsHTML}
+            <div class="footer">یه برنامه کوچیک برای پنجشنبه</div>
+        `);
+    }
+
+    function acceptInvite() {
+        showTimeSelection();
+    }
+
+    function declineInvite() {
+        if (currentStep < 3) {
+            currentStep++;
+        } else {
+            currentStep = 4;
+        }
+
+        showStep();
+    }
+
+    function showTimeSelection() {
+        const times = [
+            "16:30",
+            "17:00",
+            "17:30",
+            "18:00",
+            "18:30",
+            "19:00"
+        ];
+
+        render(`
+            <div class="top-label">انتخاب ساعت قرار</div>
+            <div class="icon">⏰</div>
+            <h1>چه ساعتی مناسبه؟</h1>
+            <p class="description">
+                از بین این ساعت‌ها یکی رو انتخاب کن تا برنامه پنجشنبه رو هماهنگ کنیم.
+            </p>
+
+            <div class="time-options">
+                ${times.map(time => `
+                    <button
+                        class="time-button ${selectedTime === time ? 'selected' : ''}"
+                        onclick="chooseTime('${time}')">
+                        ${time}
+                    </button>
+                `).join("")}
+            </div>
+
+            <button class="primary" onclick="finishInvite()">
+                ثبت ساعت انتخابی
+            </button>
+
+            <div class="footer">پنجشنبه | 4:30 تا 7:00 عصر</div>
+        `);
+    }
+
+    function chooseTime(time) {
+        selectedTime = time;
+        showTimeSelection();
+    }
+
+    function finishInvite() {
+        if (!selectedTime) {
+            alert("اول یه ساعت انتخاب کن!");
+            return;
+        }
+
+        render(`
+            <div class="top-label">قرارمون هماهنگ شد!</div>
+            <div class="icon">🎉</div>
+            <h1>عالیه، پس هماهنگ شد!</h1>
+
+            <p class="description">
+                پس پنجشنبه ساعت
+            </p>
+
+            <div class="final-time">${selectedTime}</div>
+
+            <p class="description">
+                رو فعلاً در نظر می‌گیریم.<br>
+                مکان قرار رو هم پنجشنبه صبح بهت اطلاع می‌دم.
+            </p>
+
+            <div class="date-box">
+                پنجشنبه | ساعت ${selectedTime}
+            </div>
+
+            <div class="footer">منتظر یه پنجشنبه خوب باش!</div>
+        `);
+    }
+
+    showStep();
+</script>
+
+</body>
+</html>

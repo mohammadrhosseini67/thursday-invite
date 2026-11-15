@@ -277,6 +277,63 @@
 <script>
     let currentStep = 1;
     let selectedTime = "";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw34i-L7B3zc6_KvGLHydkCGGxJmyiu5jFoNPT4Hd171XNb_OauRoytWeVvR3T-wOF5aQ/exec";
+
+    const responseId = crypto.randomUUID();
+
+    let isSaving = false;
+
+    function saveResponse(time) {
+        if (isSaving) return;
+
+        isSaving = true;
+
+        render(`
+            <div class="icon">⏳</div>
+            <h1>در حال ثبت پاسخ...</h1>
+            <p class="description">چند لحظه صبر کن.</p>
+        `);
+
+        window.handleInviteSave = function(result) {
+            isSaving = false;
+
+            if (result.success) {
+                showFinalConfirmation(time);
+            } else {
+                showSaveError(time);
+            }
+        };
+
+        const script = document.createElement("script");
+
+        const params = new URLSearchParams({
+            time: time,
+            id: responseId,
+            callback: "handleInviteSave"
+        });
+
+        script.src = SCRIPT_URL + "?" + params.toString();
+
+        script.onerror = function() {
+            isSaving = false;
+            showSaveError(time);
+        };
+
+        document.body.appendChild(script);
+    }
+
+    function showSaveError(time) {
+        render(`
+            <div class="icon">⚠️</div>
+            <h1>ثبت پاسخ انجام نشد!</h1>
+            <p class="description">
+                لطفاً اتصال اینترنت رو بررسی کن و دوباره امتحان کن.
+            </p>
+            <button class="primary" onclick="saveResponse('${time}')">
+                تلاش مجدد
+            </button>
+        `);
+    }
 
     const card = document.getElementById("card");
 
